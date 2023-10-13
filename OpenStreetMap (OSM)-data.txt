@@ -1,0 +1,7 @@
+OpenStreetMap (OSM)-data,
+
+OpenStreetMap (OSM) data, used in this application, provides a foundational geographic dataset that empowers location-based features. It offers freely accessible, crowd-sourced information on streets, landmarks, and geographic features worldwide. This data is valuable for rendering interactive maps, enabling location selection, and enhancing the overall user experience by facilitating precise location-based weather information. OpenStreetMap data is a collaborative, open-source resource that fuels global mapping efforts and serves as a versatile tool for various applications.
+
+
+
+https://openweathermap.org/
