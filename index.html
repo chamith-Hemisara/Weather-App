@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time Weather</title>
+    <!-- Add Leaflet library -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <!-- Add custom CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Real-Time Weather Data</h1>
+    <form method="POST" action="/weather">
+        <input type="text" name="location" id="locationInput" placeholder="Enter a location" required>
+        <div id="suggestions"></div>
+        <button type="submit">Get Weather</button>
+    </form>
+    {% if error %}
+    <p class="error">{{ error }}</p>
+    {% endif %}
+    {% if location %}
+    <h2>Weather in {{ location }}</h2>
+    <p class="temperature">Current Temperature: {{ current_temperature }}°C</p>
+    <h3>Weather Forecast:</h3>
+    <ul class="forecast-list">
+        {% for forecast_item in forecast %}
+        <li class="forecast-item">
+            <p>Date and Time: {{ forecast_item.dt_txt }}</p>
+            <p>Temperature: {{ forecast_item.main.temp - 273.15 }}°C</p>
+            <p>Description: {{ forecast_item.weather[0].description }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <!-- Create a map container -->
+    <div id="map" class="map-container"></div>
+    <script src="{{ url_for('static', filename='autocomplete.js') }}"></script>
+</body>
+</html>
